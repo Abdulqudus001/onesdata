@@ -10,24 +10,29 @@
 <script>
 import StoreList from '@/components/StoreList/StoreList';
 import dateMixin from '@/mixins/formatDate';
-const stores = require('@/assets/stores/stores.json');
 
 export default {
   name: 'Stores',
   mixins: [dateMixin],
   components: {
-    StoreList
+    StoreList,
   },
-  data () {
+  data() {
     return {
-      stores
-    }
+      stores: [],
+    };
   },
   computed: {
-    welcomeMessage () {
-      return 'Welcome to our restaurants list! Your local time is: ' + this.currentTime;
-    }
+    welcomeMessage() {
+      return (
+        'Welcome to our restaurants list! Your local time is: ' +
+        this.currentTime
+      );
+    },
   },
-  mounted() {}
-}
+  mounted() {
+    const stores = require('@/assets/stores/stores.json');
+    this.stores = stores;
+  },
+};
 </script>

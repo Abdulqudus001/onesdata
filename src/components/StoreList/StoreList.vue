@@ -1,19 +1,22 @@
 <template>
   <div class="store-list">
     <p>Here you can find all of our restaurants. We have {{ storesCount }} stores right now!</p>
-    <Store class="store-list__item" :title="store.name" :photo="store.image" :location="store.location" v-for="store in storesWithImages" :key="store.id" />
+    <Store class="store-list__item" :title="store.name" :photo="store.image" :location="store.location" v-for="store in currentPageItems" :key="store.id" />
+    <pagination :items="storesWithImages" @changePage="onChangePage"></pagination>
   </div>
 </template>
 <style lang="scss">
 @import './StoreList.scss';
 </style>
 <script>
+import Pagination from 'jw-vue-pagination';
 import Store from '@/components/Store/Store';
 
 export default {
   name: 'StoreList',
   components: {
-    Store
+    Store,
+    Pagination
   },
   props: {
     stores: {
@@ -21,6 +24,9 @@ export default {
       default: () => []
     }
   },
+  data: () => ({
+    currentPageItems: []
+  }),
   computed: {
     storesWithImages () {
       return this.stores.map(store => {
@@ -32,6 +38,12 @@ export default {
     },
     storesCount () {
       return this.stores.length;
+    }
+  },
+  methods: {
+    onChangePage(pageOfItems) {
+      // update page of items
+      this.currentPageItems = pageOfItems;
     }
   }
 }
