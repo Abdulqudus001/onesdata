@@ -9,7 +9,6 @@
 </style>
 <script>
 import Store from '@/components/Store/Store';
-import _ from 'lodash';
 
 export default {
   name: 'StoreList',
@@ -24,14 +23,15 @@ export default {
   },
   computed: {
     storesWithImages () {
-      return _.map(this.stores, function (store) {
-        store['image'] = 'https://via.placeholder.com/300?text=' + store.name;
-
-        return store;
-      });
+      return this.stores.map(store => {
+        return {
+          ...store,
+          image: 'https://via.placeholder.com/300?text=' + store.name
+        }
+      })
     },
     storesCount () {
-      return _.size(this.stores);
+      return this.stores.length;
     }
   }
 }

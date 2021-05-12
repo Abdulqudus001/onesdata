@@ -8,18 +8,18 @@
 </template>
 
 <script>
-import moment from "moment";
 import StoreList from '@/components/StoreList/StoreList';
+import dateMixin from '@/mixins/formatDate';
 const stores = require('@/assets/stores/stores.json');
 
 export default {
   name: 'Stores',
+  mixins: [dateMixin],
   components: {
     StoreList
   },
   data () {
     return {
-      currentTime: moment().format('dddd, MMMM Do YYYY, h:mm:ss a'),
       stores
     }
   },
@@ -28,12 +28,6 @@ export default {
       return 'Welcome to our restaurants list! Your local time is: ' + this.currentTime;
     }
   },
-  mounted() {
-    const setTimer = () => setTimeout(() => {
-      this.currentTime = moment().format('dddd, MMMM Do YYYY, h:mm:ss a');
-      setTimer();
-    }, 1000);
-    setTimer();
-  }
+  mounted() {}
 }
 </script>
