@@ -1,7 +1,6 @@
 <template>
   <div class="store-list">
     <p>Here you can find all of our restaurants. We have {{ storesCount }} stores right now!</p>
-    <base-loader />
     <div class="store-list__items">
       <Store class="store-list__item" :title="store.name" :photo="store.image" :location="store.location" v-for="store in currentPageItems" :key="store.id" />
     </div>
@@ -14,14 +13,12 @@
 <script>
 import Pagination from 'jw-vue-pagination';
 import Store from '@/components/Store/Store';
-import BaseLoader from '@/components/Base/BaseLoader';
 
 export default {
   name: 'StoreList',
   components: {
     Store,
-    Pagination,
-    BaseLoader
+    Pagination
   },
   props: {
     stores: {

@@ -2,6 +2,7 @@
   <div class="page page__stores">
     <p>{{ welcomeMessage }}</p>
     <div class="pages__stores-list">
+      <base-loader />
       <StoreList :stores="stores" />
     </div>
   </div>
@@ -19,6 +20,7 @@ export default {
   },
   data() {
     return {
+      loadingStores: true,
       stores: [],
     };
   },
@@ -31,11 +33,13 @@ export default {
     },
   },
   mounted() {
+    this.loadingStores = true;
     fetch(
       'https://res.cloudinary.com/ibnabubakre/raw/upload/v1620820819/stores.json'
     )
       .then((res) => res.json())
       .then((stores) => {
+        // this.loadingStores = false;
         this.stores = stores;
       });
   },
