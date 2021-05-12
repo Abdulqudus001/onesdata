@@ -31,8 +31,13 @@ export default {
     },
   },
   mounted() {
-    const stores = require('@/assets/stores/stores.json');
-    this.stores = stores;
+    fetch(
+      'https://res.cloudinary.com/ibnabubakre/raw/upload/v1620820819/stores.json'
+    )
+      .then((res) => res.json())
+      .then((stores) => {
+        this.stores = stores;
+      });
   },
 };
 </script>
