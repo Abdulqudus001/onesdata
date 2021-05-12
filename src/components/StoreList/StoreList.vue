@@ -1,10 +1,33 @@
 <template>
   <div class="store-list">
-    <p>Here you can find all of our restaurants. We have {{ storesCount }} stores right now!</p>
+    <input
+      id="store"
+      class="store-list__search"
+      type="search"
+      name="store"
+      aria-label="Search store"
+      placeholder="Search Store"
+      v-model="storeName"
+    />
+    <p>
+      Here you can find all of our restaurants. We have {{ storesCount }} stores
+      right now!
+    </p>
     <div class="store-list__items">
-      <Store class="store-list__item" :title="store.name" :photo="store.image" :location="store.location" v-for="store in currentPageItems" :key="store.id" />
+      <Store
+        class="store-list__item"
+        :title="store.name"
+        :photo="store.image"
+        :location="store.location"
+        v-for="store in currentPageItems"
+        :key="store.id"
+      />
     </div>
-    <pagination :items="storesWithImages" @changePage="onChangePage"></pagination>
+    <pagination
+      :items="filteredStores"
+      :page-size="16"
+      @changePage="onChangePage"
+    ></pagination>
   </div>
 </template>
 <style lang="scss">
@@ -18,35 +41,39 @@ export default {
   name: 'StoreList',
   components: {
     Store,
-    Pagination
+    Pagination,
   },
   props: {
     stores: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data: () => ({
-    currentPageItems: []
+    currentPageItems: [],
+    storeName: '',
   }),
   computed: {
-    storesWithImages () {
-      return this.stores.map(store => {
+    filteredStores() {
+      return this.storesWithImages.filter(el => el.name.toLowerCase().includes(this.storeName.toLowerCase()))
+    },
+    storesWithImages() {
+      return this.stores.map((store) => {
         return {
           ...store,
-          image: 'https://via.placeholder.com/300?text=' + store.name
-        }
-      })
+          image: 'https://via.placeholder.com/300?text=' + store.name,
+        };
+      });
     },
-    storesCount () {
-      return this.stores.length;
-    }
+    storesCount() {
+      return this.filteredStores.length;
+    },
   },
   methods: {
     onChangePage(pageOfItems) {
       // update page of items
       this.currentPageItems = pageOfItems;
-    }
-  }
-}
+    },
+  },
+};
 </script>

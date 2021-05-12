@@ -4,4 +4,13 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
   }
+
+  &__search {
+    min-height: 50px;
+    width: 500px;
+    max-width: 100%;
+    padding: 0 20px;
+    border-radius: 5px;
+    border: 1px solid;
+  }
 }
