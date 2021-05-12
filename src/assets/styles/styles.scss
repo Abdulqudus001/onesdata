@@ -27,6 +27,12 @@ html, body {
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  &__stores {
+    &-loader {
+      text-align: center;
+    }
+  }
 }
 
 @media (min-width: 1200px) {

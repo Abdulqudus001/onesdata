@@ -1,0 +1,20 @@
+.pagination {
+  display: flex !important;
+  margin: 10px auto !important;
+  justify-content: center;
+
+  .page-link {
+    border: 1px solid #aaa;
+    &:hover {
+      background-color: #CCC;
+    }
+  }
+
+  .active a {
+    background-color: #CCC;
+  }
+
+  li.disabled a {
+    opacity: 0.6;
+  }
+}

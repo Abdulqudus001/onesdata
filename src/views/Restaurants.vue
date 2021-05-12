@@ -2,11 +2,17 @@
   <div class="page page__stores">
     <p>{{ welcomeMessage }}</p>
     <div class="pages__stores-list">
-      <base-loader />
-      <StoreList :stores="stores" />
+      <div v-if="loadingStores" class="page__stores-loader">
+        <base-loader />
+      </div>
+      <StoreList :stores="stores" v-else />
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@import '@/assets/styles/pagination.scss';
+</style>
 
 <script>
 import StoreList from '@/components/StoreList/StoreList';
@@ -39,7 +45,7 @@ export default {
     )
       .then((res) => res.json())
       .then((stores) => {
-        // this.loadingStores = false;
+        this.loadingStores = false;
         this.stores = stores;
       });
   },

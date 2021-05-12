@@ -23,9 +23,8 @@
 }
 
 .app-loader {
-  display: flex;
-
   > div {
+    display: inline-block;
     width: 25px;
     height: 50px;
     background-color: #CCC;
