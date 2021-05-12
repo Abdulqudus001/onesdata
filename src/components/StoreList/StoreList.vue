@@ -19,6 +19,7 @@
         :title="store.name"
         :photo="store.image"
         :location="store.location"
+        :joke="jokeOfTheDay.text"
         v-for="store in currentPageItems"
         :key="store.id"
       />
@@ -35,10 +36,12 @@
 </style>
 <script>
 import Pagination from 'jw-vue-pagination';
+import jokes from '@/mixins/fetchJokes';
 import Store from '@/components/Store/Store';
 
 export default {
   name: 'StoreList',
+  mixins: [jokes],
   components: {
     Store,
     Pagination,

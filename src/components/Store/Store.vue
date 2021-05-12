@@ -3,6 +3,9 @@
     <div class="store__wrapper">
       <h2 class="store__title">{{ title }}</h2>
       <span class="store__location">{{ location }}</span>
+      <div class="store__joke">
+        <b>Joke</b>: <span>{{ joke }}</span>
+      </div>
       <img :src="photo" :alt="title" :title="title" />
     </div>
   </div>
@@ -20,6 +23,10 @@ export default {
       default: null
     },
     location: {
+      type: String,
+      default: null
+    },
+    joke: {
       type: String,
       default: null
     },
