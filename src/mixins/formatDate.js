@@ -10,6 +10,13 @@ export default {
     setTimer();
   },
   methods: {
+    convertTo12HourFormat(hour) {
+      if (hour == 0) {
+        return '00'
+      } else {
+        return hour % 12;
+      }
+    },
     getFormattedDate() {
       const date = new Date();
       const days = [
@@ -38,7 +45,7 @@ export default {
       const currentDay = days[date.getDay()];
       const currentMonth = months[date.getMonth()];
       const currentDate = `${currentMonth} ${this.getCardinals(date.getDate())} ${date.getFullYear()}`;
-      const currentHour = date.getHours();
+      const currentHour = this.convertTo12HourFormat(date.getHours());
       const currentMinute = date.getMinutes();
       const currentSecond = date.getSeconds();
       const period = currentHour >= 12 ? 'pm' : 'am';
