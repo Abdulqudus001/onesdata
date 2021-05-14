@@ -49,7 +49,7 @@ export default {
       const currentMinute = date.getMinutes();
       const currentSecond = date.getSeconds();
       const period = currentHour >= 12 ? 'pm' : 'am';
-      const time = `${currentHour}:${currentMinute}:${currentSecond} ${period}`;
+      const time = `${currentHour}:${currentMinute.toString().padStart(2, '0')}:${currentSecond.toString().padStart(2, '0')} ${period}`;
 
       const formattedDate = `${currentDay}, ${currentDate}, ${time}`
 
