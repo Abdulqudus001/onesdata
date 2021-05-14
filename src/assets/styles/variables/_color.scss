@@ -10,4 +10,11 @@
   --color-primary: var(--color-black);
   --color-secondary: var(--color-white);
   --color-highlight: var(--color-peter-river);
+
+  &.dark {
+    --color-black: #fff;
+    --color-gray: #333;
+    --color-dark-gray: #999;
+    --color-white: #000;
+  }
 }

@@ -27,9 +27,9 @@
     display: inline-block;
     width: 25px;
     height: 50px;
-    background-color: #CCC;
+    background-color: var(--color-gray);
     margin: 10px;
-    border: 1px solid;
+    border: 1px solid var(--color-black);
     animation: pulse 1.5s 0.5s linear infinite;
     padding: 2px;
 

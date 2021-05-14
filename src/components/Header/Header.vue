@@ -10,6 +10,13 @@
       <li class="header__navigation-item">
         <router-link to="/restaurants" class="header__navigation-item-link">Our Restaurants</router-link>
       </li>
+      <li class="header__navigation-item">
+        <base-switch
+          label="Toggle light mode"
+          id="theme-toggle"
+          @change="handleChange"
+        />
+      </li>
     </ul>
   </div>
 </template>
@@ -18,6 +25,14 @@
 </style>
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data: () => ({
+    lightMode: false
+  }),
+  methods: {
+    handleChange() {
+      document.documentElement.classList.toggle('dark');
+    }
+  }
 }
 </script>

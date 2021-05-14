@@ -6,12 +6,12 @@
   .page-link {
     border: 1px solid #aaa;
     &:hover {
-      background-color: #CCC;
+      background-color: var(--color-gray);
     }
   }
 
   .active a {
-    background-color: #CCC;
+    background-color: var(--color-gray);
   }
 
   li.disabled a {
