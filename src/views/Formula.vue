@@ -27,7 +27,6 @@ export default {
   },
   mounted() {
     const { params } = this.$route;
-    console.log(params);
     if (Object.keys(params).length < 1) {
       this.$router.push({ name: 'Meals' })
     }

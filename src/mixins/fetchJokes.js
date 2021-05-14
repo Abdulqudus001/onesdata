@@ -49,7 +49,6 @@ export default {
     },
     loadJokes() {
       if (this.isJokeOutdated() === true) {
-        console.log('Fetching123');
         fetch('https://api.jokes.one/jod?category=knock-knock')
           .then((res) => res.json())
           .then((res) => {
